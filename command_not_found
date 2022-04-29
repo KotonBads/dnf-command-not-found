@@ -3,7 +3,7 @@
 command_not_found_handler() {
     echo "Querying..."
     # Find which package contains the file
-    package_name=$(dnf provides -q $1 2> /dev/null | sed 1q | awk '{print $1}' | head)
+    package_name=$(dnf provides -q "*bin/$1" 2> /dev/null | sed 1q | awk '{print $1}' | head)
 
     # If no package is found output the error message which ZSH shows by default
     [[ -z "$package_name" ]] && echo "zsh: command not found: $1" && exit 1
