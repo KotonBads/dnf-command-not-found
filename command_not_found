@@ -2,7 +2,7 @@
 
 command_not_found_handler() {
     echo "Querying..."
-    # Find which package contains the file with the path /usr/bin/COMMAND
+    # Find which package contains the file
     package_name=$(dnf provides -q $1 2> /dev/null | sed 1q | awk '{print $1}' | head)
 
     # If no package is found output the error message which ZSH shows by default
